@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="category.css" />
+  </head>
+  <body>
+    <header>
+      <div class="admin-page">
+        <div>
+          <img
+            class="logo-img"
+            src="../images/Dr._Martens_Logo.svg.png"
+            alt=""
+          />
+        </div>
+        <a class="admin-login" href="">
+          <i class="fa-regular fa-user"></i>
+          <h3>admin</h3>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="admin-dashboard">
+        <ul class="dashboard">
+          <li><a href="./admin.html">ユーザー</a></li>
+          <li><a href="./product.html">商品</a></li>
+          <li><a href="category.html">カテゴリー</a></li>
+          <li><a href="oder.html">オーダー</a></li>
+        </ul>
+
+        <div class="category">
+          <h1>カテゴリー</h1>
+
+          <form class="product-input-name">
+            <p id="error-category-name"></p>
+
+            <div class="add-div">
+              <input type="text" id="category-inline" />
+
+              <button id="btn-submit-form" type="button">カテゴリー登録</button>
+
+              <button id="btn-cancel-form" type="button">キャンセル</button>
+            </div>
+
+            <div class="div-search">
+              <input
+                type="text"
+                placeholder="カテゴリー名を検索"
+                id="search-inputText"
+              />
+              <button id="search-btn" type="button">検索</button>
+              <br />
+              <label for=""></label>
+              <select name="" id="sort-input">
+                <option value="no">none</option>
+                <option value="aes">a-z</option>
+                <option value="des">z-a</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="table-data">
+            <table>
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>カテゴリー名</th>
+                  <th>削除/アップデート</th>
+                </tr>
+              </thead>
+
+              <tbody id="categoryData">
+                <!-- <tr>
+                  <td>${dbCategory[index].id}</td>
+                  <td>${dbCategory[index].name}</td>
+                  <td>
+                    <button>Update</button>
+                    <button onclick="deleteCategory">delete</button>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/2724178c42.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="category.js"></script>
+  </body>
+</html>

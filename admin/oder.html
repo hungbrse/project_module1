@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header>
+      <div class="admin-page">
+        <div>
+          <img
+            class="logo-img"
+            src="../images/Dr._Martens_Logo.svg.png"
+            alt=""
+          />
+        </div>
+        <a class="admin-login" href="">
+          <i class="fa-regular fa-user"></i>
+          <h3>admin</h3>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="admin-dashboard">
+        <ul class="dashboard">
+          <li><a href="./admin.html">ユーザー</a></li>
+          <li><a href="./product.html">商品</a></li>
+          <li><a href="category.html">カテゴリー</a></li>
+          <li><a href="oder.html">オーダー</a></li>
+        </ul>
+
+        <div class="table-data">
+          <h1>オーダー管理</h1>
+
+         
+
+          <table  >
+            <td>
+                <th>id</th>
+                <th>オーダーされた商品名</th>
+                <th>オーダーされた数</th>
+                <th>オーダーを受けた日付</th>
+                <th>性別</th>
+                <th>ステージ</th>
+                <th>ID ユーザー</th>
+                <th>削除/アップデート</th>
+            </td>
+          </table>
+        </div>
+
+        
+      </div>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/2724178c42.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新規会員登録</title>
+    <link rel="stylesheet" href="register.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img
+          class="nav-logo-img"
+          src="../images/Dr._Martens_Logo.svg.png"
+          alt=""
+        />
+
+        <ul class="nav-center">
+          <li><a class="nav-color-pink" href="">SUMMER SALE</a></li>
+          <li><a class="nav-link" href="">新着アイテム </a></li>
+          <li><a class="nav-link" href="">レディース</a></li>
+          <li><a class="nav-link" href="">メンズ</a></li>
+          <li><a class="nav-link" href="">キッズ</a></li>
+          <li><a class="nav-link" href="">ブランド</a></li>
+          <li><a class="nav-link" href="">SHOWROOM TYO</a></li>
+          <li><a class="nav-link" href="">店舗情報</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="nav-right-item">
+            <div>
+              <a class="nav-link" href="">
+                <i class="fa-regular fa-heart"></i>
+                お気に入り
+              </a>
+            </div>
+
+            <div>
+              <a class="nav-link" href="">
+                <i class="fa-regular fa-user"></i>
+
+                ログイン
+              </a>
+            </div>
+
+            <div>
+              <a class="nav-link" href="">
+                <i class="fa-solid fa-poo"></i>
+                カート
+              </a>
+            </div>
+          </div>
+          <div>
+            <input type="search" placeholder="アイテムを検索" />
+            <i
+              style="position: relative; right: 30px"
+              class="fa-solid fa-magnifying-glass search-icon"
+            ></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="register-main">
+        <h1>新規会員登録</h1>
+
+        <form action="">
+          <div id="error-message" style="color: red"></div>
+
+          <div class="form-item">
+            <label for="inputEmail">メールアドレス</label>
+            <input
+              type="email"
+              name=""
+              id="inputEmail"
+              maxlength="32"
+              required
+            />
+          </div>
+
+          <div class="form-item">
+            <label for="inputPassword">パスワード</label>
+            <input
+              type="password"
+              name=""
+              id="inputPassword"
+              maxlength="15"
+              value=""
+              required
+            />
+          </div>
+
+          <div class="form-item">
+            <label for="inputUserName">お名前</label>
+            <input
+              type="text"
+              name=""
+              id="inputUserName"
+              maxlength="32"
+              value=""
+              required
+            />
+          </div>
+
+          <div class="form-item">
+            <label for="inputTel">携帯番号</label>
+            <input type="tel" name="" id="inputTel" maxlength="11" required />
+          </div>
+
+          <div class="form-item">
+            <label for="inputbirthDay">生年月日</label>
+            <input type="date" name="" id="inputbirthDay" required />
+          </div>
+          <div class="form-item">
+            <button id="register-btn" type="button">登録</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <div>
+        <ul class="footer_nav">
+          <li>
+            <h3>アイテム</h3>
+            <a href="">レディース</a>
+            <a href="">メンズ</a>
+            <a href="">キッズ</a>
+          </li>
+          <li>
+            <h3>コンテンツ</h3>
+            <a href="">Tough as you</a>
+            <a href="">ブランドについて</a>
+            <a href="">特集</a>
+            <a href="">ルック</a><a href="">お知らせ</a>
+            <a href=""
+              >ストアースタッフ<br />
+              コーディネート</a
+            >
+            <a href=""> 世界のスタリング </a>
+          </li>
+          <li>
+            <h3>サービス</h3>
+            <a href="">マイページ</a>
+            <a href="">よくある質問</a>
+            <a href="">サイズガイド</a>
+            <a href="">配送について</a>
+            <a href="">変便交換について</a>
+            <a href="">メンバープログラム</a>
+            <a href="">お問い合わせ</a>
+          </li>
+          <li>
+            <h3>企業情報</h3>
+            <a href="">店舗情報</a>
+            <a href="">会社概要</a>
+            <a href="">採用情報</a>
+            <a href="">MODERN SLAVERY STATEMENT</a>
+            <a href="">SUSTAINABILITY</a>
+            <a href="">GENDER PAY GAP REPORTS</a>
+          </li>
+          <li>
+            <h3>その他</h3>
+            <a href="">個人情報データ扱い</a>
+            <a href="">ご使用規約</a>
+            <a href=""
+              >特定間取引に関する<br />
+              法律に基づく表記
+            </a>
+            <a href=""> サイトマップ </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/2724178c42.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="register.js"></script>
+  </body>
+</html>

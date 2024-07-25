@@ -1,0 +1,129 @@
+.div-sale-header-txt {
+
+    text-align: center;
+}
+
+
+
+
+main .div-sale-img {
+
+ margin-top: 150px ;
+ text-align: center;
+}
+
+.div-sale-img img{
+
+    width: 1280px;
+}
+
+
+main .div-sale-header-txt   {
+    margin-top: 50px;
+}
+
+
+main .div-sale-header-txt h3 , p  {
+    margin-top: 30px;
+}
+
+main .genderList {
+
+    padding-bottom: 20px;
+    width: 65%;
+    border-bottom: 1px solid #c8c8cb;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px
+    ;
+}
+
+
+
+main .genderList  li a {
+   font-weight: 600;
+   color: #2B2B2B;
+   font-size: 16px;
+}
+
+
+
+main .c-item-list {
+
+    margin: 0px auto;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+
+
+main .c-item-list:last-child {
+
+}
+
+
+
+main .c-item-list li a img {
+    
+     width: 302px;
+}
+
+
+
+
+
+main .c-item-list li {
+    
+    width: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+main .c-item-list h3 {
+  
+    font-size: 12px;
+}
+
+
+
+
+main .c-item-list span {
+  
+    display: block;
+    font-size: 14px;
+}
+
+
+
+
+
+main .c-item-list .span-price {
+  
+    text-decoration: line-through;
+}
+
+
+main .c-item-list .span-red-color {
+  
+ color: #e91a93;
+
+}
+@media screen and ( max-width: 900px ) {
+    li { flex-basis: 33%; }                    
+  }
+  
+  @media screen and ( max-width: 600px ) {
+    li { flex-basis: 50%; }                    
+ }
+  
+  @media screen and ( max-width: 300px ) {
+    li { flex-basis: 100%; }                  
+  }

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main_page.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img
+          class="nav-logo-img"
+          src="./images/Dr._Martens_Logo.svg.png"
+          alt=""
+        />
+
+        <ul class="nav-center">
+          <li><a class="nav-color-pink" href="">SUMMER SALE</a></li>
+          <li><a class="nav-link" href="">新着アイテム </a></li>
+          <li><a class="nav-link" href="">レディース</a></li>
+          <li><a class="nav-link" href="">メンズ</a></li>
+          <li><a class="nav-link" href="">キッズ</a></li>
+          <li><a class="nav-link" href="">ブランド</a></li>
+          <li><a class="nav-link" href="">SHOWROOM TYO</a></li>
+          <li><a class="nav-link" href="">店舗情報</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="nav-right-item">
+            <div>
+              <a class="nav-link" href="">
+                <i class="fa-regular fa-heart"></i>
+                お気に入り
+              </a>
+            </div>
+
+            <div>
+              <a class="nav-link" href="">
+                <i class="fa-regular fa-user"></i>
+
+                ログイン
+              </a>
+            </div>
+
+            <div>
+              <a class="nav-link" href="">
+                <i class="fa-solid fa-poo"></i>
+                カート
+              </a>
+            </div>
+          </div>
+          <div>
+            <input type="search" placeholder="アイテムを検索" />
+            <i
+              style="position: relative; right: 30px"
+              class="fa-solid fa-magnifying-glass search-icon"
+            ></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="div-login-main">
+        <h2 class="div-login-campaign-h2">ログイン</h2>
+
+        <div class="div-login-campaign">
+          <h1>
+            最大30%OFF <br />
+            サマーセール再開中
+          </h1>
+
+          <button class="btn-div-login-campaign">対象商品を見る</button>
+        </div>
+
+        <div class="div-login-container">
+          <form class="div-login-input">
+            <h3>会員の方</h3>
+            <p id="error-messenger"></p>
+            <input id="loginInput" type="email" placeholder="メールアドレス" />
+            <input
+              id="loginPassword"
+              type="password"
+              placeholder="パスワード"
+            />
+            <input id="login-btn" type="button" value="ログインして進む" />
+            <p><span>パスワードをお忘れですか</span></p>
+          </form>
+
+          <form class="div-login-input">
+            <h3>まだ会員登録をされていない方</h3>
+            <p>会員登録をすると、下記の便利なサービスをご利用いただけます。</p>
+            <p>キャンペーンやイベント招待などのお知らせをいたします。</p>
+            <p>ポイントをためて、ノベルティに交換いただけます。</p>
+            <a href="../register/register.html" id="register-btn"
+              >新規会員登録</a
+            >
+          </form>
+
+          <div></div>
+        </div>
+      </div>
+
+      <div class="c-pageBottom">
+        <a style="color: white" class="c-pageBottom_link" href="">
+          <div class="arrow_up">
+            <i class="fa-solid fa-chevron-up"></i>
+          </div>
+          ドクターマーチン公式オンラインショップ TOPへ
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <div>
+        <ul class="footer_nav">
+          <li>
+            <h3>アイテム</h3>
+            <a href="">レディース</a>
+            <a href="">メンズ</a>
+            <a href="">キッズ</a>
+          </li>
+          <li>
+            <h3>コンテンツ</h3>
+            <a href="">Tough as you</a>
+            <a href="">ブランドについて</a>
+            <a href="">特集</a>
+            <a href="">ルック</a><a href="">お知らせ</a>
+            <a href=""
+              >ストアースタッフ<br />
+              コーディネート</a
+            >
+            <a href=""> 世界のスタリング </a>
+          </li>
+          <li>
+            <h3>サービス</h3>
+            <a href="">マイページ</a>
+            <a href="">よくある質問</a>
+            <a href="">サイズガイド</a>
+            <a href="">配送について</a>
+            <a href="">変便交換について</a>
+            <a href="">メンバープログラム</a>
+            <a href="">お問い合わせ</a>
+          </li>
+          <li>
+            <h3>企業情報</h3>
+            <a href="">店舗情報</a>
+            <a href="">会社概要</a>
+            <a href="">採用情報</a>
+            <a href="">MODERN SLAVERY STATEMENT</a>
+            <a href="">SUSTAINABILITY</a>
+            <a href="">GENDER PAY GAP REPORTS</a>
+          </li>
+          <li>
+            <h3>その他</h3>
+            <a href="">個人情報データ扱い</a>
+            <a href="">ご使用規約</a>
+            <a href=""
+              >特定間取引に関する<br />
+              法律に基づく表記
+            </a>
+            <a href=""> サイトマップ </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/2724178c42.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="login.js"></script>
+  </body>
+</html>

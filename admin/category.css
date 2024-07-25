@@ -1,0 +1,244 @@
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+header .admin-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   background-color: black;
+    padding: 10px 30px;
+    border-bottom: 1px solid white ;
+}
+
+
+a {
+    text-decoration: none;
+    color:  #ffe512;
+}
+
+
+header .logo-img{
+    margin-top: 20px;
+    width: 97px;
+    height: 55px;
+    display: flex;
+}
+
+header .admin-page .admin-login {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+main .dashboard {
+    
+    border-right: 1px solid white;
+    width: 30%;
+    padding: 30px 0px;
+    width: 20%;
+    background-color: black;
+    display: flex;
+    text-align: center;
+    gap: 30px;
+    color: aliceblue;
+    flex-direction: column;
+}
+
+
+main .admin-dashboard {
+    display: flex;
+    background-color: black;
+    color: white;
+    min-height:900px;
+}
+
+main .table-data {
+
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+/* 
+main .admin-dashboard .table-data h1 {
+    width: 90%;
+   text-align: center;
+    border-bottom: 1px solid black;
+    margin: 25px  auto;
+
+} */
+
+
+
+main .admin-dashboard .table-data input[type="search"] {
+
+    width: 50%;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+
+
+main .admin-dashboard .table-data  button {
+
+  padding: 4px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffe512;
+
+
+}
+
+
+main .category {
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+
+main .category  .product-input{
+
+  width: 50%;  
+  margin-top: 20px;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+
+}
+
+
+
+main .category  .product-input-name .add-div #category-inline{
+
+    flex: 3;
+    padding: 5px 0px;
+
+
+
+
+}
+
+
+
+
+main .category  .product-input-name .add-div {
+    
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+
+  
+  }
+
+
+
+  
+
+
+main .category  .product-input-name #search-btn {
+
+    padding: 4px 5px;
+  
+  }
+
+
+  
+
+
+main .category  .product-input-name .div-search {
+
+    
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+  
+  }
+
+
+  
+
+
+main .category  .product-input-name #search-inputText {
+
+   padding: 5px 0px;
+
+    flex: 3;
+  }
+
+
+
+main .product  .product-input input[type="search"]{
+    
+    padding: 5px 5px;
+   
+}
+
+
+
+main .category  .product-input-name .div-search  #search-btn{
+
+    padding: 5px 0px;
+    border: none;
+  
+    flex: 1;
+  
+
+  }
+
+
+  
+
+main .category  .product-input-name .div-search  #sort-input{
+
+    border: none;
+  
+    flex: 1;
+  
+  }
+
+
+
+
+main .product  .product-input .product-add-btn{
+
+    padding: 0px 10px;
+    border: none;
+    background-color: #ffe512;
+   
+}
+
+
+
+
+.table-data  tr th{
+   
+   padding: 5px;
+   border:1px solid white;
+
+}
+
+
+
+
+.table-data  tr td{
+   
+    padding: 5px;
+    border:1px solid white;
+ 
+ }
+ 

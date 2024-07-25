@@ -1,0 +1,215 @@
+
+*{
+    margin: 0;
+    padding: 0;
+   box-sizing: border-box;
+}
+
+header .admin-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   background-color: black;
+    padding: 10px 30px;
+    border-bottom: 1px solid white ;
+}
+
+
+a {
+    text-decoration: none;
+    color:  #ffe512;
+}
+
+
+header .logo-img{
+    margin-top: 20px;
+    width: 97px;
+    height: 55px;
+    display: flex;
+}
+
+header .admin-page .admin-login {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+
+main .dashboard {
+
+    min-height:900px;
+    
+    border-right: 1px solid white;
+    width: 30%;
+    padding: 30px 0px;
+    width: 20%;
+    background-color: black;
+    display: flex;
+    text-align: center;
+    gap: 30px;
+    color: aliceblue;
+    flex-direction: column;
+}
+
+
+main .admin-dashboard {
+    display: flex;
+    background-color: black;
+    color: white;
+    
+
+}
+
+
+
+main .admin-dashboard  li{
+   
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+
+
+main .product-input input[type="text"] {
+    padding: 5px 50px; 
+}
+
+main .product {
+    gap: 20px;
+    text-align: center;
+    width: 100%;
+
+
+}
+
+
+main .product-input {
+    margin-top: 30px;
+    gap: 30px;
+    display:flex;
+    justify-content: center;
+}
+
+
+
+main .product-input .search-btn ,.product-show-btn{
+    padding: 4px;
+    border: none;
+  
+}
+
+main .product-input .product-show-btn:hover {
+
+    cursor: pointer;
+}
+
+main .product-input select  {
+  padding: 5px;
+}
+
+
+main .product-table {
+
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+
+main .product-table  table tr th ,
+main .product-table  table tr td 
+{
+    padding: 10px;
+    
+}
+
+
+.modal {
+    display: none;
+    padding: 30px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 350px;
+    overflow: auto;
+    background-color:white;
+    color: black;
+
+  }
+
+  
+.modal  .close {    
+    text-align: right;
+    color: white;
+    font-size: 30px;
+    background-color: red;
+    border: none;
+    padding: 0px 5px;
+    position: relative;
+    right:-100%;
+    top: -30px;
+}
+
+
+
+  
+.modal  .close:hover {    
+   
+    cursor: pointer;
+}
+
+
+.modal .modal-content #productForm #submit-input-btn {
+    padding: 5px 15px;
+}
+
+
+.modal .modal-content #productForm #submit-input-btn:hover{
+    cursor: pointer;
+
+}
+
+  
+
+.modal input {
+   padding: 4px 30px;   
+    float: right;
+  }
+
+  .div-input {
+    margin-bottom: 15px;
+  }
+
+  
+
+  main .product-table #pagination  {
+    justify-content: center;
+  display: flex;
+  margin-top: 15px;
+  gap: 10px;
+   
+}
+
+
+  main .product-table #pagination  button{
+
+    padding: 8px;
+
+   
+}
+
+
+
+
+main .product-table #pagination  button:hover{
+
+
+    cursor: pointer;
+   
+}

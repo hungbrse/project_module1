@@ -1,0 +1,745 @@
+
+var getUrlVars = function(){
+    var vars = {}; 
+    var param = location.search.substring(1).split('&');
+    for(var i = 0; i < param.length; i++) {
+        var keySearch = param[i].search(/=/);
+        var key = '';
+        if(keySearch != -1) key = param[i].slice(0, keySearch);
+        var val = param[i].slice(param[i].indexOf('=', 0) + 1);
+        if(key != '') vars[key] = decodeURI(val);
+    } 
+    return vars; 
+}
+                                    
+function getUniqueStr(myStrong){
+ var strong = 10000000;
+ if (myStrong) strong = myStrong;
+ return new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16)
+}
+
+function GetCookie( name )
+{
+    var result = null;
+
+    var cookieName = name + '=';
+    var allcookies = document.cookie;
+
+    var position = allcookies.indexOf( cookieName );
+    if( position != -1 )
+    {
+        var startIndex = position + cookieName.length;
+
+        var endIndex = allcookies.indexOf( ';', startIndex );
+        if( endIndex == -1 )
+        {
+            endIndex = allcookies.length;
+        }
+
+        result = decodeURIComponent(
+            allcookies.substring( startIndex, endIndex ) );
+    }
+
+    return result;
+}
+ 
+
+function HostDomainName(){
+
+    var KTM_host = location.hostname.split(".");
+    var KTM_domain = "";
+    var KTM_dl = KTM_host.length;
+
+    if(KTM_dl < 3){
+
+        KTM_domain = '.' + KTM_host[0] + '.' + KTM_host[1];
+
+    }else
+    if(KTM_dl == 3){
+
+        if((KTM_host[KTM_dl-2] == "co" && KTM_host[KTM_dl-1] == "jp")||(KTM_host[KTM_dl-2] == "jpn" && KTM_host[KTM_dl-1] == "com")){
+
+             KTM_domain = '.' + KTM_host[0] + '.' + KTM_host[1] + '.' + KTM_host[2];       
+
+        }else
+        {
+              KTM_domain = '.' + KTM_host[KTM_dl-2] + '.' + KTM_host[KTM_dl-1];        
+
+        }
+
+    }else
+    if(KTM_dl == 4){
+
+        KTM_domain = '.' + KTM_host[KTM_dl-3] + '.' + KTM_host[KTM_dl-2] + '.' + KTM_host[KTM_dl-1];         
+
+    }else
+    if(KTM_dl == 5){
+
+        KTM_domain = '.' + KTM_host[KTM_dl-4] + '.'+ KTM_host[KTM_dl-3] + '.' + KTM_host[KTM_dl-2] + '.' + KTM_host[KTM_dl-1];         
+
+    }
+    
+    return KTM_domain;
+
+}
+
+
+function ITP_Cookie(cookie_name, cookie_val, domain, exp, cookie_val2){
+    
+    document.cookie = cookie_name + '=' + escape(cookie_val) + ';' + ' domain='+ domain + ';path=/;' + 'expires=' + exp;
+    
+    if(cookie_val2){
+        
+        localStorage.setItem(cookie_name, escape(cookie_val2));
+        
+    }else{
+        
+        localStorage.setItem(cookie_name, escape(cookie_val));
+        
+    }
+    
+    
+}
+
+
+function Clk_Cookie(cookie_name, cookie_val, domain, exp){
+    
+    document.cookie = cookie_name + '=' + escape(cookie_val) + ';' + ' domain='+ domain + ';path=/;' + 'max-age=' + exp;
+    //localStorage.setItem(cookie_name, escape(cookie_val));
+    
+}
+
+var getDevice = (function(){
+    var ua = navigator.userAgent;
+    var devid;
+    if(ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0){
+        
+        devid = 1;
+        
+        if(ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0){
+            
+            devid = 4;
+            
+        }else if(ua.indexOf('iPhone') > 0){
+            
+            devid = 5;
+        }
+        
+        
+        
+    }else if(ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0){
+        devid = 2;
+    }else{
+        devid = 0;
+    }
+    
+    return devid;
+    
+})();
+
+
+
+var KTMdomain_host = HostDomainName();
+var KTMuid = getUniqueStr();
+var getVal = getUrlVars();
+var itp_lp_tag = 0;
+var devid = getDevice;
+var mid = '';
+var ff1 = '';
+var parax = decodeURIComponent(getVal.___KTM___para1); //並行トラッキング用パラメータの取得
+
+
+var dec = decodeURIComponent(getVal.___KTM___cd);
+var cdresult = dec.split(':');
+var KTMitpxid = getUniqueStr();
+console.log('itpx_id= ' + KTMitpxid);
+
+//var fp = new Fingerprint2({xcludeUserAgent: true,excludeDeviceMemory: true});
+//var options = {xcludeUserAgent: true,excludeDeviceMemory: true}
+var fpoptions = {
+    excludes: {userAgent: true, enumerateDevices: true, DeviceMemory: true}
+}
+
+
+if((parax == null) || (parax == "undefined" || parax == "")){
+    
+    //並行トラッキング用パラメータが存在しない場合の処理
+    
+    //var fp = new Fingerprint2(options);
+    
+var dec = decodeURIComponent(getVal.___KTM___cd);
+var cdresult = dec.split(':');
+
+
+var cookie_limit = cdresult[5];
+var SFC = cdresult[6];
+    
+var ASPID = cdresult[0];
+                                   
+if(getVal.__KTM___cx && getVal.___KTM___cd){
+
+var paraname;
+var paravalue;
+
+var date1,date2;
+var kigen = cookie_limit;
+
+date1 = new Date();
+date1.setTime(date1.getTime() + kigen*60*60*1000);
+date2 = date1.toGMTString();
+var ts = Date.parse( date2.replace( /-/g, '/') ) / 1000;
+
+var paraname = 'KTMpcx';
+var paravalue = 'sp' + cdresult[1] + ':' + KTMuid + ':' + KTMdomain_host + ':' + cdresult[0];
+var KTMparavalue = paravalue + ":" + ts;
+
+document.cookie = paraname + "=" + escape(paravalue) + "; path=/; domain=" + KTMdomain_host + "; expires=" + date2;
+localStorage.setItem(paraname, escape(KTMparavalue));
+    
+//ITP_Cookie(paraname, paravalue, KTMdomain_host, date2, lsparavalue);
+    
+if(SFC == 1){
+
+    var second1stc = 'ff.php?__KTM_TG_CD__=' + escape(paravalue) + '&__KTM_TG_DN__=' + escape(KTMdomain_host) + '&__KTM_TG_CL__=' + cookie_limit;
+
+    var s1 = document.createElement("img");
+    s1.setAttribute("width", "1");
+    s1.setAttribute("height", "1");
+    s1.setAttribute("src", second1stc);
+    document.body.appendChild(s1);
+
+}
+    
+    
+    itp_lp_tag = 1;
+    
+        
+        //var fpres = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31);
+        //var fp2 = new Fingerprint({canvas: true, screen_resolution: true});
+        //console.log("FP=" + fpres);
+        //console.log("FP2=" + fp2.get());
+
+       
+        //console.log(getVal.__otp___cx);
+    
+    
+
+        if(getVal.__KTM___cx && getVal.___KTM___cd){
+
+            var lpimgsrc = "//kmatm.net/itpx/lpmain.php?__KTM___cx=" + getVal.__KTM___cx + '&itp=' + KTMuid;
+            
+            //console.log(lpimgsrc);
+
+            var element01 = document.createElement('div');
+            element01.id = "KTMOneTag01";
+            var objBody01 = document.getElementsByTagName("body").item(0);
+            objBody01.appendChild(element01);
+
+            var o = document.createElement("script");
+            //o.setAttribute("width", "1");
+            //o.setAttribute("height", "1");
+            o.setAttribute("src", lpimgsrc);
+			//o.setAttribute("style", "display:none;");
+            document.getElementById("KTMOneTag01").appendChild(o);
+
+            //console.log('[ONETAG] cx:true');
+
+        }
+
+
+
+    
+}
+
+
+}else{
+    
+
+    
+    //並行トラッキング用パラメータが存在した場合の処理
+
+    var paraxresult = parax.split(':');
+    
+    var ASPID = paraxresult[0];
+
+    
+    if(getVal.___KTM___mid){
+       
+       mid = decodeURIComponent(getVal.___KTM___mid); //メディアID取得用パラメータの取得
+        
+        console.log(mid);
+        
+    }
+
+    if(getVal.ff1){
+       
+       ff1 = decodeURIComponent(getVal.ff1); //メディアID取得用パラメータの取得
+        
+        console.log(ff1);
+        
+    }
+
+    /*************************************************************/
+
+    var nowdate,date1,cdate,date2,clkdate1,clkdate2,clkmax;
+    
+    var kigen = 60; //CV用Cookie期限（日）
+    var clk_kigen = 1; //クリック用Cookie期限（日）
+    
+    
+    date1 = new Date();
+    cdate = date1.getTime() + kigen*24*60*60*1000;
+    date1.setTime(cdate);
+    date2 = date1.toGMTString();
+    
+    var ts = Date.parse( date2.replace( /-/g, '/') ) / 1000;
+
+    nowdate = new Date();
+    nowdate = nowdate.getTime(); // 現在のタイムスタンプ
+    clkmax = clk_kigen*60*60*24;
+    //clkdate1 = nowdate + clkmax*1000; // クリックアップ期限（24時間）
+
+    var clk_cookie_name = 'KTMsp' + paraxresult[1];
+    
+    var clk_cookie_val = KTMuid + ':' + paraxresult[0] + ':' + paraxresult[2] + ':' + mid + ':' + ff1;
+    
+    var paraname = 'KTMpcx';
+    
+    var paravalue = 'sp' + paraxresult[1] + ':' + KTMitpxid + ':' + KTMdomain_host + ':' + paraxresult[2];
+    var lsparavalue = paravalue + ":" + ts;
+    
+
+    var cd = GetCookie(clk_cookie_name);
+    
+    console.log(cd);
+
+    if(cd == null){
+
+        /****新規Cookie発行************************************/
+        
+        Clk_Cookie(clk_cookie_name, clk_cookie_val, KTMdomain_host, clkmax);
+
+        ITP_Cookie(paraname, paravalue, KTMdomain_host, date2, lsparavalue);
+        
+        itp_lp_tag = 1;
+        
+
+    }else
+        {
+            var cdx = cd.split(":");
+            var cpid = cdx[1]; //Cookie内のプロモーションID
+            var caspid = cdx[2]; //Cookie内のASPID
+            var cmid = cdx[3]; //Cookie内のmid
+            var cssid = cdx[4]; //Cookie内のff1
+
+            if(paraxresult[0] == cpid && paraxresult[2] == caspid && cmid == mid){
+                
+                //並行トラッキング用パラメータのプロモーションIDと
+                //Cookie内のプロモーションIDが同一の場合の処理
+                
+                if(cmid != mid | cssid != ff1 | caspid != ASPID){
+                    
+                    Clk_Cookie(clk_cookie_name, clk_cookie_val, KTMdomain_host, clkmax);
+                    ITP_Cookie(paraname, paravalue, KTMdomain_host, date2, lsparavalue);
+                    itp_lp_tag = 1;
+                    
+                }
+                
+            }else
+                {
+                    //並行トラッキング用パラメータのプロモーションIDと
+                    //Cookie内のプロモーションIDが異なる場合の処理
+                    
+                    Clk_Cookie(clk_cookie_name, clk_cookie_val, KTMdomain_host, clkmax);
+                    ITP_Cookie(paraname, paravalue, KTMdomain_host, date2, lsparavalue);
+                    //ITP_Cookie(paraname2, paravalue2, KTMdomain_host, date2,'');
+                  
+                    itp_lp_tag = 1;
+                    
+                }
+
+            }
+
+    console.log(cd);
+    
+    if(itp_lp_tag == 1){
+
+        console.log("FPSTART");
+        
+        
+        
+        
+        
+        //var fpres = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31)
+        
+       //var fpres = result;
+        //console.log(fpres);
+        
+        if(getVal.___KTM___para1){
+
+                var lpimgsrc = '//kmatm.net/itpx/parallel_main.php?fp=' + fpres + '&itp=' + KTMitpxid + '&sp=' + paraxresult[1] + '&pr=' + paraxresult[2] + '&aspid=' + paraxresult[0] + '&dev=' + devid + '&cid=' + KTMuid + '&mid=' + mid + '&linkid=' + paraxresult[3] + '&ff1=' + ff1;
+
+                var element01 = document.createElement('div');
+                element01.id = "KTMOneTag01";
+                var objBody01 = document.getElementsByTagName("body").item(0);
+                objBody01.appendChild(element01);
+
+                var o = document.createElement("img");
+                o.setAttribute("width", "1");
+                o.setAttribute("height", "1");
+                o.setAttribute("src", lpimgsrc);
+                document.getElementById("KTMOneTag01").appendChild(o);
+
+                //console.log('[ONETAG] cx:true');
+
+        }
+
+       
+
+
+
+    }
+    
+    
+    
+}
+
+console.log("itp_lp_tag=" + itp_lp_tag);                                    
+
+                                    
+if(itp_lp_tag == 1){
+  
+
+var printtags = {
+
+"A8":{"main":'//statics.a8.net/a8sales/a8sales.js',"pt": 0, "mheader": 1},
+"A8N":{"main":'//statics.a8.net/a8sales/a8sales.js',"pt": 0, "mheader": 1},
+"A8N2":{"main":'//statics.a8.net/a8sales/a8sales.js',"pt": 0, "mheader": 1},
+"A8NT":{"main":'//statics.a8.net/a8sales/a8sales.js',"pt": 0, "mheader": 1},
+
+"AB":{ "main": 'https://t.afi-b.com/jslib/lpcv.js?cid=##P1##&pid=##P2##', "async": 1, "sub":'if (!window.afblpcvLpConf) {  window.afblpcvLpConf = [];}window.afblpcvLpConf.push({  siteId: "##P1##"});', "pt": 1},
+"AB2":{ "main": 'https://t.afi-b.com/jslib/lpcv.js?cid=##P1##&pid=##P2##', "async": 1, "sub":'if (!window.afblpcvLpConf) {  window.afblpcvLpConf = [];}window.afblpcvLpConf.push({  siteId: "##P1##"});', "pt": 1},
+"AB3":{ "main": 'https://t.afi-b.com/jslib/lpcv.js?cid=##P1##&pid=##P2##', "async": 1, "sub":'if (!window.afblpcvLpConf) {  window.afblpcvLpConf = [];}window.afblpcvLpConf.push({  siteId: "##P1##"});', "pt": 1},
+"AB4":{ "main": 'https://t.afi-b.com/jslib/lpcv.js?cid=##P1##&pid=##P2##', "async": 1, "sub":'if (!window.afblpcvLpConf) {  window.afblpcvLpConf = [];}window.afblpcvLpConf.push({  siteId: "##P1##"});', "pt": 1},
+    
+"ADB":{ "main": '//af-110.com/js/lpm.js', "sub": 'window.af110_pgid = "##P1##";', "ns": '<img src="//af-110.com/t/lp.png?pgid=##P1##&jse=0" width="1" height="1" alt="">', "pt": 1 },
+"ADB2":{ "main": '//af-110.com/js/lpm.js', "sub": 'window.af110_pgid = "##P1##";', "ns": '<img src="//af-110.com/t/lp.png?pgid=##P1##&jse=0" width="1" height="1" alt="">', "pt": 1 },
+"ADB3":{ "main": '//af-110.com/js/lpm.js', "sub": 'window.af110_pgid = "##P1##";', "ns": '<img src="//af-110.com/t/lp.png?pgid=##P1##&jse=0" width="1" height="1" alt="">', "pt": 1 },
+"ADB4":{ "main": '//af-110.com/js/lpm.js', "sub": 'window.af110_pgid = "##P1##";', "ns": '<img src="//af-110.com/t/lp.png?pgid=##P1##&jse=0" width="1" height="1" alt="">', "pt": 1 },
+    
+"ADL":{"main":'//click.ad-link.jp/assets/js/adlinktrack.js',"pt": 0, "mheader": 1},
+
+"AOS":{"main":'',"sub": '(function(w,d,o,u,r,a,m){w[\'affiliateocean\']=r;w[r]=w[r]||function(){(w[r].q= w[r].q||[]).push(arguments)},w[r].l=1*new Date();a=d.createElement(o),m=d.getElementsByTagName(o)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m);})(window,document,\'script\',\'https://affiliate-ocean.jp/cv.min.js\',\'ao\');var ao_cv_params={\'domain\':\'##P1##\',\'cc\':\'##P2##\'};ao(\'c\',ao_cv_params);', "pt": 3},
+"AOS2":{"main":'',"sub": '(function(w,d,o,u,r,a,m){w[\'affiliateocean\']=r;w[r]=w[r]||function(){(w[r].q= w[r].q||[]).push(arguments)},w[r].l=1*new Date();a=d.createElement(o),m=d.getElementsByTagName(o)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m);})(window,document,\'script\',\'https://affiliate-ocean.jp/cv.min.js\',\'ao\');var ao_cv_params={\'domain\':\'##P1##\',\'cc\':\'##P2##\'};ao(\'c\',ao_cv_params);', "pt": 3},
+       
+"AT":{"main":'https://h.accesstrade.net/js/nct/lp.min.js',"pt": 0},
+"AT2":{"main":'https://h.accesstrade.net/js/nct/lp.min.js',"pt": 0},
+"AT3":{"main":'https://h.accesstrade.net/js/nct/lp.min.js',"pt": 0},
+"AT4":{"main":'https://h.accesstrade.net/js/nct/lp.min.js',"pt": 0},
+    
+"VC":{"main":'//trj.valuecommerce.com/vclp.js', "async": 1, "pt": 0},
+    
+"FEL":{"main":'https://js.felmat.net/fmlp.js',"pt": 0},
+"IMB":{"main":'//aff.i-mobile.co.jp/script/lpcvlink.js',"pt": 0},
+
+"JAN":{"main":'',"sub": '(function (b, f, d, a, c) {var e = b.createElement(f);e.src = c + "/" + a + "/atm.js";e.id = d;e.async = true;b.getElementsByTagName(f)[0].parentElement.appendChild(e)})(document,"script","__cribnotesTagMgrCmd","##P1##","https://tag.cribnotes.jp/container_manager")', "pt": 3},
+"JAN2":{"main":'',"sub": '(function (b, f, d, a, c) {var e = b.createElement(f);e.src = c + "/" + a + "/atm.js";e.id = d;e.async = true;b.getElementsByTagName(f)[0].parentElement.appendChild(e)})(document,"script","__cribnotesTagMgrCmd","##P1##","https://tag.cribnotes.jp/container_manager")', "pt": 3},
+"JAN3":{"main":'',"sub": '(function (b, f, d, a, c) {var e = b.createElement(f);e.src = c + "/" + a + "/atm.js";e.id = d;e.async = true;b.getElementsByTagName(f)[0].parentElement.appendChild(e)})(document,"script","__cribnotesTagMgrCmd","##P1##","https://tag.cribnotes.jp/container_manager")', "pt": 3},
+    
+"RIS":{"main":'https://rise-center.jp/itp/lp.php?cid=##P1##',"pt": 0},
+"RTR":{"main":'',"sub":'function loadScript(url, callback) {var script = document.createElement("script");script.type = "text/javascript";script.src = url;if ( script.readyState ) {script.onreadystatechange = function() {if ( script.readyState === "loaded" || script.readyState === "complete" ) {script.onreadystatechange = null;callback();};};} else {script.onload = function() {callback();};};document.getElementsByTagName("head")[0].appendChild(script);};var date = new Date();loadScript("https://www.rentracks.jp/js/itp/rt.track.js?t=" + date.getTime(), function(){});',"pt": 3},
+    
+"RTR2":{"main":'',"sub":'function loadScript(url, callback) {var script = document.createElement("script");script.type = "text/javascript";script.src = url;if ( script.readyState ) {script.onreadystatechange = function() {if ( script.readyState === "loaded" || script.readyState === "complete" ) {script.onreadystatechange = null;callback();};};} else {script.onload = function() {callback();};};document.getElementsByTagName("head")[0].appendChild(script);};var date = new Date();loadScript("https://www.rentracks.jp/js/itp/rt.track.js?t=" + date.getTime(), function(){});',"pt": 3},
+
+
+"SCN":{ "main": 'https://act.scadnet.com/itp/lp.js', "sub": 'var mainDomain = \'##P1##\'; var cookieDay = ##P2##; scanLp(mainDomain, cookieDay);', "pt": 2 },
+"SCN2":{ "main": 'https://act.scadnet.com/itp/lp.js', "sub": 'var mainDomain = \'##P1##\'; var cookieDay = ##P2##; scanLp(mainDomain, cookieDay);', "pt": 2 },
+"SCN3":{ "main": 'https://act.scadnet.com/itp/lp.js', "sub": 'var mainDomain = \'##P1##\'; var cookieDay = ##P2##; scanLp(mainDomain, cookieDay);', "pt": 2 },
+
+"AFL":{"main":'',"sub": 'if(_mfr=window.location.search.match("##P1##=l_([0-9a-y]{10})(&|$)")){ var _mfd=new Date(); var _mfe=new Date(_mfd.getFullYear(),_mfd.getMonth()+4,0,23,59,59); document.cookie="##P2##="+_mfr[1]+";expires="+_mfe.toGMTString()+";path=/;domain=."+window.location.host;}', "pt": 3},
+    
+"ZKA":{"main":'//get.mobu.jp.eimg.jp/js/conv/landing.min.js', "async": 1, "elmid": 'zafscript_landing', "pt": 0},
+"TGX":{"pt": 4},
+"UNC":{"pt": 4},
+"GRT":{"main":'',"sub": 'var _CIDN = "cid";var _PMTN = "p";var _param = location.search.substring(1).split("&");var _ulp = "", _ulcid = "";for(var i = 0; _param[i]; i++){ var kv = _param[i].split("="); if(kv[0] == _PMTN && kv[1].length > 1){ _ulp = kv[1]; } if(kv[0] == _CIDN && kv[1].length > 1){ _ulcid = kv[1]; }}if(_ulp && _ulcid){ document.cookie = "CL_" + _ulp + "=" + decodeURIComponent(_ulcid) + "; expires=" + new Date(new Date().getTime() + (259200 * 1000)).toUTCString() + "; path=/;"; }', "pt": 3},
+    
+"CA":{"main":'',"sub": '!function(e,t,n,r,a,c,s){e.TrackerObject=a,e[a]=e[a]||function(){(e[a].q=e[a].q||[]).push(arguments)}, e[a].l=1*new Date,c=t.createElement(n), s=t.getElementsByTagName(n)[0],c.async=1,c.src=r+"?_t="+e[a].l, s.parentNode.insertBefore(c,s)} (window,document,"script","https://script-ad.mobadme.jp/js/tracker.js","trk"); trk("configure", "domain", "##P1##"); trk("set", "##P2##");', "pt": 3},
+
+"BF":{"main":'',"sub": 'var b=function(){if(""!==window.location.search){var c={};window.location.search.split("?")[1].split("&").forEach(function(a){a=a.split("="); c[a[0]]=a[1]});return c}}();if(b.t){var d="TX="+b.t,e=new Date;e.setTime(e.getTime()+5184E6);document.cookie=d+";path=/;"+("expires="+e.toGMTString())};', "pt": 3},
+    
+"TOWN":{"main":'https://ad.atown.jp/adserver/js/lib/clickaction/click.js',"pt": 0},
+"TCS":{"main":'https://www.tcs-asp.net/tcsalink.js?##P1##',"pt": 0},
+"PRS":{"main":'https://ad.presco.asia/fpc/ck.js',"sub": 'var gid=##P1##;', "pt": 2, "elmid": 'presco_script'},
+    
+"INW":{"main":'',"sub": 'var _CIDN = "cid"; var _PMTN = "p"; var _LPTU = "##P1##"; var _param = location.search.substring(1).split("&"); var _ulp = "", _ulcid = ""; for(var i = 0; _param[i]; i++){ var kv = _param[i].split("="); if(kv[0] == _PMTN && kv[1].length > 1){ _ulp = kv[1]; } if(kv[0] == _CIDN && kv[1].length > 1){ _ulcid = kv[1]; }} if(_ulp && _ulcid){ _xhr = new XMLHttpRequest(); _xhr.open("GET", _LPTU + "lptag.php?p=" + _ulp + "&cid=" + _ulcid); _xhr.send(); }', "pt": 3},
+"MDP":{"main":'//www.medipartner.jp/js/medipartner_click.js',"pt": 0, "mheader": 1},
+"ICN":{"pt": 4},
+    
+"ADV":{"main":'',"sub": '(function(){var l=location.search.slice(1).split("&");for(var i=0;l[i];i++){var v=l[i].split("=",2);if(v[0]=="_NQINPX"){var p=v[1].split("_",2);if(p[0]&&p[1]){var t=Date.now();document.cookie="NQINPX_"+p[0]+"="+decodeURIComponent(p[1]+"T"+t)+"; expires="+new Date(t+86400000).toUTCString()+"; path=/;";}}}})();', "pt": 3},
+"ALP":{"pt": 4},
+"SFAD":{"pt": 4},
+"MVR":{"pt": 4},
+"ATW":{"main":'https://ad.atown.jp/adserver/js/lib/clickaction/click.js',"pt": 0},
+"UNI":{ "main": 'https://static.mopo.jp/tr/js/lp.min.js', "sub": 'window._mpid=\'##P1##\';window._msidn=\'##P2##\';window._otd=\'##P3##\';', "pt": 2 },
+"FAD":{"pt": 4},
+"MSM":{"pt": 4},
+"MSM2":{"pt": 4},
+"MSM3":{"pt": 4},
+"MSM4":{"pt": 4},
+"SMJ":{"pt": 4},
+"SQD":{"pt": 4},
+"PEK":{"pt": 4},
+"NEX":{"pt": 4},
+"SKB":{"pt": 4},
+"NHT":{"pt": 4},
+"GANE":{"pt": 4},
+"TWW":{"pt": 4},
+"XMX":{"main":'https://images.xmax.jp/tracking/script.js?mv=##P1##&type=0',"pt": 0},
+"MOB2":{"pt": 4},
+"FNB":{"pt": 4},
+"LAM":{"main":'',"pt": 4},
+"WBT":{"main":'',"pt": 4},
+"XVL":{"main":'',"pt": 4},
+}
+
+//pt(出力パターン)
+//1：javascript本体のみ
+//2：サブ⇒本体で出力
+//3：本体⇒サブで出力
+//4：サブのみ出力
+
+
+
+var ptx_main = printtags[ASPID]['main']; //javascript本体(URL)
+var ptx_async = printtags[ASPID]['async']; //非同期設定
+var ptx_sub = printtags[ASPID]['sub']; //javascript（パラメータ等）
+var ptx_pt = printtags[ASPID]['pt']; //出力タイプ（0：本体のみ 1：サブ・本体 2：本体・サブ 3：サブのみ）
+var ptx_ns = printtags[ASPID]['ns']; //noscriptタグの出力
+var ptx_elmid = printtags[ASPID]['elmid']; //scriptタグのID設定
+var ptx_mheader = printtags[ASPID]['mheader']; //本体の出力場所（1：header）
+var ptx_sheader = printtags[ASPID]['sheader']; //サブの出力場所（1：header）
+    
+if(ptx_main){
+
+    if(cdresult[2]){
+
+        ptx_main = ptx_main.replace(/##P1##/g,cdresult[2]);
+
+    }
+
+    if(cdresult[3]){
+
+        ptx_main = ptx_main.replace(/##P2##/g,cdresult[3]);
+
+    }
+
+    if(cdresult[4]){
+
+        ptx_main = ptx_main.replace(/##P3##/g,cdresult[4]);
+
+    }
+
+}
+
+
+if(ptx_sub){
+
+
+    if(cdresult[2]){
+
+        ptx_sub = ptx_sub.replace(/##P1##/g,cdresult[2]);
+
+    }
+
+    if(cdresult[3]){
+
+        ptx_sub = ptx_sub.replace(/##P2##/g,cdresult[3]);
+
+    }
+    if(cdresult[4]){
+
+        ptx_sub = ptx_sub.replace(/##P3##/g,cdresult[4]);
+
+    }
+//console.log(ptx_sub);
+//console.log(cdresult[2]);
+
+}
+
+if(ptx_ns){
+
+
+    if(cdresult[2]){
+
+        ptx_ns = ptx_ns.replace(/##P1##/g,cdresult[2]);
+
+    }
+
+    if(cdresult[3]){
+
+        ptx_ns = ptx_ns.replace(/##P2##/g,cdresult[3]);
+
+    }
+    if(cdresult[4]){
+
+        ptx_ns = ptx_ns.replace(/##P3##/g,cdresult[4]);
+
+    }
+//console.log(ptx_sub);
+//console.log(cdresult[2]);
+
+}
+
+
+
+
+//console.log(printtags[cdresult[0]]);
+
+if(ptx_pt == 0){
+    
+    //javascript本体のみ
+    
+    var script = document.createElement('script');
+    script.src = ptx_main;
+    
+    if(ptx_async){
+        
+        if(ptx_async == 1){
+            
+            script.async = 'async';
+            
+        }
+        
+    }
+    
+    if(ptx_elmid){ script.id = ptx_elmid; }
+    
+    if(ptx_mheader){
+
+        document.getElementsByTagName("head")[0].appendChild(script);
+
+    } else {
+
+        document.body.appendChild(script);
+
+    }
+    
+    
+}
+
+if(ptx_pt == 1 | ptx_pt == 2){
+    
+    //本体・サブ
+    
+    var script = document.createElement('script');
+    script.src = ptx_main;
+    
+    if(ptx_async){
+        
+        if(ptx_async == 1){
+            
+            script.async = 'async';
+            
+        }
+        
+    }
+    if(ptx_elmid){ script.id = ptx_elmid; }
+    
+    
+    var script_para = document.createElement('script');
+    script_para.innerHTML = ptx_sub;
+    
+    if(ptx_pt == 1){
+        
+        if(ptx_sheader){
+
+            document.getElementsByTagName("head")[0].appendChild(script_para);
+
+        } else {
+
+            document.body.appendChild(script_para);
+
+        }
+
+
+        if(ptx_mheader){
+
+            document.getElementsByTagName("head")[0].appendChild(script);
+
+        } else {
+
+            document.body.appendChild(script);
+
+        }
+
+        
+    } else {
+        
+        if(ptx_mheader){
+
+            document.getElementsByTagName("head")[0].appendChild(script);
+
+        } else {
+
+            document.body.appendChild(script);
+
+        }
+
+        if(ptx_sheader){
+
+            document.getElementsByTagName("head")[0].appendChild(script_para);
+
+        } else {
+
+            document.body.appendChild(script_para);
+
+        }
+
+    }
+    
+    
+    
+    
+}
+
+if(ptx_pt == 3){
+    
+    //サブのみ
+    var script_para = document.createElement('script');
+    script_para.innerHTML = ptx_sub;
+
+        if(ptx_sheader){
+
+            document.getElementsByTagName("head")[0].appendChild(script_para);
+
+        } else {
+
+            document.body.appendChild(script_para);
+
+        }
+
+}
+
+if(ptx_ns){
+
+    var no_script = document.createElement('noscript');
+    no_script.innerHTML = ptx_ns;
+    document.body.appendChild(no_script);
+
+
+}
+
+var dc_img = document.createElement('img');
+dc_img.src = '//kmatm.net/delck.php';
+dc_img.width = 1;
+dc_img.height = 1;
+dc_img.border = 0;
+dc_img.style.display = "none";
+document.body.appendChild(dc_img);
+
+
+    
+}
+
+
+

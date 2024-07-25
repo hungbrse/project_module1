@@ -1,0 +1,29 @@
+window.QGSettings = {
+   "appId": "6a7bdcb12eda9a5c2e9c",
+   "debug": false,
+   "personalizationEnabled": true,
+   "vapidPublicKey": "BEApoTOKBjMNAdtja-MYm-05zMASR-1QejopTfzxJIw1jNMrQCXvrt8o2I7nmNYbcdMmlL1W2MnG4ocFkBEd-nw",
+   "qgendpoint": "https:///notify.html",
+   "origin": "https://jp.drmartens.com/women.html",
+   "inWebEnabled": false
+};
+if(window.qg && window.qg.queue) {
+    window.qg.queue.unshift(('init', QGSettings));
+}
+!function(q,g,r,a,p,h,js){
+    if(!q.qg){
+        js=q.qg=function() {
+            js.callmethod ? js.callmethod.call(js, arguments) : js.queue.push(arguments);
+            js.queue = [];
+        }
+    }
+    if(q.qg.initialized){return;}
+    window.qg.queue.unshift(['init',window.QGSettings])
+    p=g.createElement(r);
+    p.async=!0;
+    p.src=a;
+    h=g.getElementsByTagName(r)[0];
+    h.parentNode.insertBefore(p,h);
+    q.qg.initialized = true;
+}(window,document,'script','https://cdn.qgraph.io/v3/r/aiqua.js');
+
