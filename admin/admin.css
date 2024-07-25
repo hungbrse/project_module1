@@ -29,12 +29,33 @@ header .logo-img{
 }
 
 header .admin-page .admin-login {
+    flex-direction: column;
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
     color: white;
+    justify-content: center;
 }
+
+
+
+header .admin-page .admin-login  #admin-login{
+  align-items: center;
+  display: flex;
+}
+
+
+
+
+header .admin-page .admin-login #logout {
+   
+    position: relative;
+    display: none;
+    top: -20%;
+    border: 1px solid white;
+}
+
 
 
 main .dashboard {

@@ -21,6 +21,11 @@ let paginationDiv = document.getElementById("pagination-div")
 let searchBtn = document.getElementById("search-Btn")
 let searchInput = document.getElementById("searchInput")
 let sortInput = document.getElementById("sort-input")
+let adminLogin = document.getElementById("admin-login")
+
+let adminLogout = document.getElementById("logout")
+
+
 
 
 
@@ -114,4 +119,23 @@ sortInput.addEventListener("change", function () {
 searchBtn.addEventListener("click", function () {
     render();
 })
+
+
+adminLogin.addEventListener("mouseover", function () {
+
+    adminLogout.style.display = "block"
+
+})
+
+adminLogin.addEventListener("mouseout", function () {
+
+    adminLogout.style.display = "none"
+
+
+})
+
+adminLogout.addEventListener("click", function () {
+    window.location.href = "http://127.0.0.1:5501/login/login.html"
+})
+
 render();
