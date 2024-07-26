@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="product.css" />
+  </head>
+  <body>
+    <header>
+      <div class="admin-page">
+        <div>
+          <img
+            class="logo-img"
+            src="../images/Dr._Martens_Logo.svg.png"
+            alt=""
+          />
+        </div>
+        <a class="admin-login" href="">
+          <i class="fa-regular fa-user"></i>
+          <h3>admin</h3>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="admin-dashboard">
+        <ul class="dashboard">
+          <li><a href="./admin.html">ユーザー</a></li>
+          <li><a href="./product.html">商品</a></li>
+          <li><a href="category.html">カテゴリー</a></li>
+          <li><a href="oder.html">オーダー</a></li>
+        </ul>
+
+        <div class="product">
+          <h1>商品管理</h1>
+
+          <div class="product-input">
+            <div>
+              <input type="text" id="searchInput" />
+              <button class="search-btn">検索</button>
+            </div>
+
+            <div>
+              <label for="sort-input">プライス</label>
+              <select name="" id="sort-input" class="sort-input">
+                <option value="no">none</option>
+                <option value="aes">低額ー高額</option>
+                <option value="des">高額ー低額</option>
+              </select>
+            </div>
+
+            <!-- 
+            <div>
+              <label for="category">カテゴリー</label>
+              <select name="" id="category">
+                <option value="1">全て</option>
+              </select>
+            </div> -->
+
+            <button class="product-show-btn">商品登録</button>
+          </div>
+
+          <div class="product-table">
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>順番</th>
+                  <th>写真</th>
+                  <th>商品名</th>
+                  <th>プライス</th>
+                  <th>在庫数</th>
+                  <th>カテゴリー</th>
+                  <th>削除/アップデート</th>
+                </tr>
+              </thead>
+              <tbody class="product-item"></tbody>
+            </table>
+            <div id="pagination"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="productModal" class="modal">
+        <button class="close" type="button">X</button>
+
+        <div class="modal-content">
+          <form id="productForm">
+            <div class="div-input">
+              <label for="productName">商品名:</label>
+              <input type="text" id="productName" name="productName" required />
+            </div>
+
+            <div class="div-input">
+              <label for="productPrice">プライス:</label>
+              <input
+                min="1"
+                type="number"
+                id="productPrice"
+                name="productPrice"
+                required
+              />
+            </div>
+
+            <div class="div-input">
+              <label for="productStock">在庫数:</label>
+              <input
+                min="1"
+                type="number"
+                id="productStock"
+                name="productStock"
+                required
+              />
+            </div>
+
+            <div class="div-input">
+              <label for="productCategory">カテゴリー:</label>
+
+              <select name="" id="productCategory"></select>
+            </div>
+
+            <div class="div-input">
+              <label for="productImage">写真:</label>
+              <input
+                type="file"
+                id="productImage"
+                name="productImage"
+                onchange="encodeImageFileAsURL(this)"
+              />
+              <img id="image-product" width="100px" src="" alt="" srcset="" />
+            </div>
+
+            <button id="submit-input-btn" type="button">登録</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/2724178c42.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="product.js"></script>
+  </body>
+</html>
